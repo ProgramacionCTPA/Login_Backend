@@ -15,8 +15,8 @@ app.use(cors({
 }));
 
 mongoose.connect(process.env.MONGO_URI)
-   .then(() => console.log("MongoDB conectado"))
-   .catch(err => console.log(err));
+  .then(() => console.log("MongoDB conectado"))
+  .catch(err => console.log("Error MongoDB:", err));
 
 const User = require("./models/User");
 
@@ -65,3 +65,4 @@ app.post("/login", async (req, res) => {
 
 
 app.listen(3000, () => console.log("Servidor corriendo en puerto 3000"));
+
