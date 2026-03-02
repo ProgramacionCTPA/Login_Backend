@@ -7,8 +7,12 @@ require("dotenv").config();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
 app.use(express.static("public"));
+
+app.use(cors({
+  origin: "https://login2026pw.netlify.app",
+  methods: ["GET", "POST"],
+}));
 
 mongoose.connect(process.env.MONGO_URI)
    .then(() => console.log("MongoDB conectado"))
@@ -58,5 +62,6 @@ app.post("/login", async (req, res) => {
       res.status(500).json({ message: "Error en servidor" });
    }
 });
+
 
 app.listen(3000, () => console.log("Servidor corriendo en puerto 3000"));
