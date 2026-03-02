@@ -38,9 +38,10 @@ app.post("/register", async (req, res) => {
       await user.save();
       res.json({ message: "Usuario registrado correctamente" });
 
-   } catch (error) {
-      res.status(500).json({ message: "Error en servidor" });
-   }
+catch (error) {
+   console.log("LOGIN ERROR:", error);
+   res.status(500).json({ message: error.message });
+}
 });
 
 // LOGIN
@@ -66,4 +67,5 @@ app.post("/login", async (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log(`Servidor corriendo en puerto ${PORT}`));
+
 
